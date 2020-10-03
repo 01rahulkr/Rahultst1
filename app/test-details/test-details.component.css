@@ -1,0 +1,12 @@
+#error{
+    text-align: center; justify-content: center;
+}
+
+#div1{
+    width: 300px;
+margin: 0 auto;
+}
+
+.label{
+    color: black; font-size: medium;
+}

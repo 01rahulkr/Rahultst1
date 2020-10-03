@@ -1,0 +1,25 @@
+<app-navbar-home></app-navbar-home>
+<div>
+    <div class="container-fluid">
+        <h3>Enter The User Email To Update</h3>
+        <br><br>
+        <form (ngSubmit)="onSubmit()" #updateUserHome="ngForm">
+            <div class="form-group">
+                <label id="label">User Email</label>
+                <input type="text" required #email="ngModel"
+                    pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+                    [class.is-invalid]="email.invalid && email.touched" class="form-control" name="email"
+                    [(ngModel)]="user.email">
+                <div *ngIf="email.errors && (email.invalid||email.touched)"
+                    [class.d-none]="email.valid || email.untouched">
+                    <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
+                    <small class="text-danger" *ngIf="email.errors.pattern">Enter a valid email</small>
+                </div>
+                <div>
+                    <button [disabled]="updateUserHome.form.invalid" class="btn btn-success" type="submit"
+                    routerLink="/updateuser/{{user.email}}">Update User</button>
+                </div>
+            </div>
+        </form>
+
+    </div>

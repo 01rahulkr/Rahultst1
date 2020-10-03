@@ -1,0 +1,32 @@
+<app-navbar-home></app-navbar-home>
+<br>
+<h2>Test Details</h2>
+<div class="text-danger" id="error"><b>{{errorMsg}}</b></div>
+<hr />
+<div id="div1" class="container-fluid" *ngIf="!errorMsg">
+  <div [hidden]="submitted" *ngIf="test">
+    <div>
+      <label class="label"><b>Test Id: </b></label> {{test.testId}}
+    </div>
+    <div>
+      <label class="label"><b>Test Title: </b></label> {{test.testTitle}}
+    </div>
+    <div>
+      <label class="label"><b>Test Duration: </b></label> {{test.testDuration}}<label><b> min</b></label>
+    </div>
+    <div>
+      <label class="label"><b>Test Total Marks: </b></label> {{test.testTotalMarks}}
+    </div>
+    <div>
+      <label class="label"><b>Test Start Time: </b></label> {{test.startTime}}
+    </div>
+    <div>
+      <label class="label"><b>Test End Time: </b></label> {{test.endTime}}
+    </div>
+  </div>
+
+
+  <br>
+  <br>
+  <button (click)="list()" class="btn btn-primary">Back to Test List</button><br>
+</div>

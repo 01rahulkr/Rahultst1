@@ -1,0 +1,21 @@
+<app-navbar-home></app-navbar-home>
+<br>
+<h3>Enter The Test ID </h3>
+<br><br><br>
+
+<div [hidden]="submitted">
+  <form (ngSubmit)="onSubmit()" #questionhomeForm="ngForm">
+
+    <div class="form-group">
+      <label for="name">Test Id </label>
+      <input type="number" #testid="ngModel" pattern="[0-9]{1,5}" placeholder="testid" class="form-control" id="testid"
+        required [(ngModel)]="testId" name="testid" [class.is-invalid]="testid.invalid && testid.touched">
+      <div *ngIf="testid.errors && (testid.invalid||testid.touched)" [class.d-none]="testid.valid || testid.untouched">
+        <small class="text-danger" *ngIf="testid.errors.required">Test id is required</small>
+        <small class="text-danger" *ngIf="testid.errors.pattern">test id cannot be negative</small>
+      </div>
+    </div>
+    <button routerLink="/addQuestion/{{testId}}" class="btn btn-success" [disabled]="questionhomeForm.form.invalid">Add
+      Questions</button>
+  </form>
+</div>

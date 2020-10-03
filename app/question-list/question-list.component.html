@@ -1,0 +1,33 @@
+<app-navbar-home></app-navbar-home>
+<br>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Questions List</h2>
+  </div>
+  <br>
+  <div class="panel-body">
+    <table id="table" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Question Id</th>
+          <th>Question Title</th>
+          <th>Question Answer</th>
+          <th>Question Marks</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr *ngFor='let question of question'>
+          <td>{{question.questionId}}</td>
+          <td>{{question.questionTitle}}</td>
+          <td>{{question.questionAnswer}}</td>
+          <td>{{question.questionMarks}}</td>
+
+          <td><button class="btn" (click)="updateQuestion(question)" class="btn btn-secondary">Update</button>
+            <button class="btn" (click)="deleteQuestion(question)" class="btn btn-danger">Delete</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

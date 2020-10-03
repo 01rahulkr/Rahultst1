@@ -1,0 +1,26 @@
+body {
+    background-color : #484848;
+    
+    margin: auto;
+    padding: auto;
+}
+h1 {
+    color : #030303d2;
+    text-align : center;
+    font-family: "SIMPSON";
+}
+form {
+    width: 300px;
+    margin: 0 auto;
+    
+}
+button{
+    
+    width: 300px;
+    margin: 0 auto;   
+}
+
+.label{
+    color: black;
+}
+

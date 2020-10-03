@@ -1,0 +1,74 @@
+<app-navbar-home></app-navbar-home>
+<h3>ADD TEST</h3>
+<div class="text-danger" id="div1"><b>{{errorMsg}}</b></div>
+<div class="alert alert-danger" *ngIf="errorMsg">
+  {{errorMsg}}
+</div>
+<div class="divf">
+
+  <div [hidden]="submitted">
+
+    <form (ngSubmit)="onSubmit()" #addForm="ngForm">
+
+      <div class="form-group">
+        <label for="name">Test Title </label>
+        <input type="text" required #title="ngModel" pattern="[a-zA-Z0-9\s]+" placeholder="Enter the test title"
+          class="form-control" id="testtitle" [(ngModel)]="test.testTitle" name="testTitle"
+          [class.is-invalid]="title.invalid && title.touched">
+        <div *ngIf="title.errors && (title.invalid||title.touched)" [class.d-none]="title.valid || title.untouched">
+          <small class="text-danger" *ngIf="title.errors.required">Test title is required</small>
+          <small class="text-danger" *ngIf="title.errors.pattern">Special characters not allowed</small>
+        </div>
+
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="name">Test Duration </label>
+        <input type="number" #duration="ngModel" pattern="[0-9]*" placeholder="Enter the test duration"
+          class="form-control" id="testDuration" required [(ngModel)]="test.testDuration" name="testDuration"
+          [class.is-invalid]="duration.invalid && duration.touched">
+        <div *ngIf="duration.errors && (duration.invalid||duration.touched)"
+          [class.d-none]="duration.valid || duration.untouched">
+          <small class="text-danger" *ngIf="duration.errors.required">Test duration is required</small>
+          <small class="text-danger" *ngIf="duration.errors.pattern">test duration cannot be negative</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Test Total Marks </label>
+        <input type="number" class="form-control" id="testTotalMarks" required
+          [(ngModel)]="test.testTotalMarks" name="testTotalMarks" #marks="ngModel"
+          [class.is-invalid]="marks.invalid && marks.touched">
+
+      </div>
+
+      <div class="form-group">
+        <label for="name">Test Start Time </label>
+        <input type="time" placeholder="Enter the test start time" class="form-control" id="startTime" required
+          [(ngModel)]="test.startTime" name="startTime" #startTime="ngModel"
+          [class.is-invalid]="startTime.invalid && startTime.touched">
+        <small class="text-danger" [class.d-none]="startTime.valid || startTime.untouched">Test start Time is
+          required</small>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Test End Time </label>
+        <input type="time" placeholder="Enter the test end time" class="form-control" id="endTime" required
+          [(ngModel)]="test.endTime" name="endTime" #endTime="ngModel"
+          [class.is-invalid]="endTime.invalid && endTime.touched">
+        <small class="text-danger" [class.d-none]="endTime.valid || endTime.untouched">Test end Time is required</small>
+
+      </div>
+
+      <button type="submit" style="align-items: center;" class="btn btn-success" [disabled]="addForm.form.invalid">
+        Submit</button>
+        
+    </form>
+  </div>
+  <div [hidden]="!submitted">
+    <h4>Test Added Succesfully</h4>
+  </div>
+</div>
+

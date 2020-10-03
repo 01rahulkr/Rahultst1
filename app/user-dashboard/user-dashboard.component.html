@@ -1,0 +1,16 @@
+<app-navbar-home></app-navbar-home>
+<br>
+<h3>Welcome {{user.userName}}</h3>
+<br><br>
+<div class="text-center" >
+    <label >Email:</label>{{user.email}}
+</div>
+<div id="div1" *ngIf="user.testId != 0 " class="text-center">
+    <b>You Have Been Assigned A Test </b>
+   <br><br>
+   <label>Test ID</label> {{user.testId}}
+   
+   <button  class="btn btn-success" (click)="giveTest()">Give Test</button>
+</div>
+
+

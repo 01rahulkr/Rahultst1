@@ -1,0 +1,74 @@
+<br>
+<br>
+<div *ngIf="test.testQuestions">
+  <div id="div1">
+    Test Id - {{test.testId}}
+    <span id="span1">{{hurry}} </span>
+    <br>
+    Test Title- {{test.testTitle}}
+    <br>
+    Test Total Marks- {{test.testTotalMarks}}
+  </div>
+  {{autoSubmit()}}
+
+  <div id="head" class=" col s8 offset-s2">
+    <div class="w3-card-4">
+
+      <div class="card-content black-text">
+        <span>Time Elapsed : {{displayTimeElapsed()}} </span>
+        <div class="progress">
+          <div class="determinate" [style.width.%]="(qProgress+1)*10"></div>
+        </div>
+        <span class="card-title">{{qProgress+1}}</span>
+        <p>{{test.testQuestions[qProgress].questionTitle}}</p>
+
+
+
+      </div>
+      <div class="card-action">
+        <ul class="collection answer">
+          <ng-container *ngFor="let answer of test.testQuestions[qProgress].questionOptions; let i=index">
+            {{i+1}}-
+            <button *ngIf="answer != null" class="btn" (click)="Answer(i+1)">
+
+              {{answer.value}}
+
+
+            </button>
+            <br>
+            <br>
+          </ng-container>
+        </ul>
+        Chosen Answer is {{test.testQuestions[qProgress].chosenAnswer}}
+        <br>
+        <button id="btnprevious" (click)="previous()">Previous</button>
+
+        <button id="btnnext" (click)="next()">Next</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div class="action" *ngIf="visible" style="background-color: rgba(128, 128, 128, 0.541);">
+  <br>
+  <br>
+  <button id="btnsubmit" (click)=onSubmit()>Submit</button>
+</div>
+
+<div id="result" *ngIf="show">
+
+  <div id="resultimg"> <img src="/assets/congratulations.jpg">
+    <div>
+      <span style="font-size: '25px'; font-family: cursive; align-self: center;">
+        <br>
+        You Have Successfully <br> Completed <br> The Test!!!!!
+        <br>
+        YOUR SCORE :{{result}}</span>
+      <br>
+      <br>
+      <button routerLink="" class="btn btn-info">Back To Home Page</button>
+    </div>
+  </div>
+
+</div>

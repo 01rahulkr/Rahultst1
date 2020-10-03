@@ -1,0 +1,44 @@
+<nav id="nav">
+    <div class="nav-wrapper">
+      <a id="a" href="#" (click)="Signout()" class="brand-logo">Online Test</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        
+        <li>
+            <a *ngIf="!(isUserLoggedIn())" routerLink="">Home</a>
+        </li>  
+      
+        <li>
+            <a *ngIf="!(isUserLoggedIn())" routerLink="/login">Login</a>
+        </li>
+        <li>    
+            <a *ngIf="isUserAdmin()" routerLink="/addTest">Add Test</a>
+        </li>
+        <li>
+            <a *ngIf="isUserAdmin()" routerLink="/detailshome">View Test By Id</a>
+        </li>
+        <li>
+            <a *ngIf="isUserAdmin()" routerLink="/updateTest">Update Test</a>
+        </li>
+        <li>
+            <a *ngIf="isUserAdmin()" routerLink="/viewTest">View Tests</a>
+        </li>
+        <li>
+            <a *ngIf="isUserAdmin()" routerLink="/questionhome">Add Question</a>
+        </li>
+        <li>
+            <a *ngIf="isUserAdmin()" routerLink="/questionList">View Questions</a>
+        </li>
+        <li>
+            <a *ngIf="isUserAdmin()" routerLink="/viewUsers">View Users</a>
+        </li>
+        <li>
+            <a *ngIf="(isUserAdmin())&&(isUserLoggedIn())" routerLink="/updateUser">Update User</a>
+        </li>
+      
+        <li>
+            <a (click)="Signout()" *ngIf="isUserLoggedIn()">Signout</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>

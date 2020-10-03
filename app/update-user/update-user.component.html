@@ -1,0 +1,51 @@
+<app-navbar-home></app-navbar-home>
+<div>
+
+    <div class="container-fluid">
+        <br>
+        <h3>Update User</h3>
+        <p><b>{{email}}</b></p><br>
+        <form #updateForm="ngForm">
+
+            <div class="form-group">
+                <label>User Name</label>
+                <input type="text" required #name="ngModel" pattern="[A-Za-z\s]{5,}"
+                    [class.is-invalid]="name.invalid && name.touched" class="form-control" name="userName"
+                    [(ngModel)]="userDetails.userName">
+
+                <div *ngIf="name.errors && (name.invalid||name.touched)" [class.d-none]="name.valid || name.untouched">
+                    <small class="text-danger" *ngIf="name.errors.required">Name is required</small>
+                    <small class="text-danger" *ngIf="name.errors.pattern">Name must be 5 character long</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>User Password</label>
+                <input type="password" #password="ngModel" required
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?=.*[A-Z]).{8,}"
+                    [class.is-invalid]="password.invalid && password.touched" class="form-control" name="userPassword"
+                    [(ngModel)]="userDetails.userPassword">
+
+                <div *ngIf="password.errors && (password.invalid||password.touched)"
+                    [class.d-none]="password.valid || password.untouched">
+                    <small class="text-danger" *ngIf="password.errors.required">Password is required</small>
+                    <small class="text-danger" *ngIf="password.errors.pattern"> Password must contain atleast <br>1
+                        small-case letter <br>1 Capital letter<br>1 digit<br>1 special character and should be minimum 8
+                        character
+                        long.</small>
+                </div>
+            </div>
+
+
+
+            <div>
+                <button [disabled]="updateForm.form.invalid" class="btn btn-success" type="submit"
+                    (click)="updateUserNow()">Update User</button>
+            </div>
+        </form>
+    </div>
+    <br>
+    <p><b>{{message}}</b></p>
+    <p><b>{{errorMsg}}</b></p>
+
+</div>

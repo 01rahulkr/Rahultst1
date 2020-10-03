@@ -1,0 +1,42 @@
+.active, .btn:hover {
+    background-color: rgb(102, 102, 102);
+    color: rgb(255, 255, 255);
+  }
+
+  #div1{
+    color: black;  font-size:'20px';background-color: rgba(128, 128, 128, 0.541);
+  }
+
+  #span1{
+    font-size: x-large; color: red; position: absolute; right: 10px;
+  }
+
+  #head{
+    background-color:rgba(128, 128, 128, 0.404); font-size: 18px;
+  }
+
+  #btnprevious{
+    background-color:rgb(25, 0, 255);
+  }
+
+  #btnnext{
+    position: absolute; right: 10px;
+            background-color: rgb(25, 0, 255);
+  }
+
+  #btnsubmit{
+    position: absolute; right: 415px;
+    left: 509px;
+      background-color: green;
+  }
+
+  #result{
+    border-style: solid; border-color: darkgreen; border-radius: 50px;
+      height: 500px; width: 500px; margin: auto;
+  }
+
+  #resultimg{
+    text-align: center;
+  }
+
+  

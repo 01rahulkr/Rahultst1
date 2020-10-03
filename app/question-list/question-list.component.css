@@ -1,0 +1,15 @@
+h2{
+    text-align: center; color:black;
+}
+
+#table{
+    background-color: #808080a3;
+}
+
+#tbody{
+    background-color: #007bff69;
+}
+
+.btn{
+    width: 200px;
+}

@@ -1,0 +1,46 @@
+<app-navbar-home></app-navbar-home>
+
+
+<br><br><br>
+<div>
+  <h3>Login</h3>
+
+  <form #loginForm="ngForm">
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" required #email="ngModel" placeholder="Enter email" 
+      pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        [class.is-invalid]="email.invalid && email.touched" class="form-control" 
+        name="email" [(ngModel)]="user.email">
+      <div *ngIf="email.errors && (email.invalid||email.touched)" 
+      [class.d-none]="email.valid || email.untouched">
+        <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
+        <small class="text-danger" *ngIf="email.errors.pattern">Enter a valid email</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" #password="ngModel" placeholder="Enter password" required
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?=.*[A-Z]).{8,}"
+        [class.is-invalid]="password.invalid && password.touched" class="form-control" name="userPassword"
+        [(ngModel)]="user.userPassword">
+      <div *ngIf="password.errors && (password.invalid||password.touched)"
+        [class.d-none]="password.valid || password.untouched">
+        <small class="text-danger" *ngIf="password.errors.required">Password is required</small>
+        <small class="text-danger" *ngIf="password.errors.pattern"> Password must contain atleast <br>1 small-case
+          letter <br>1 Capital letter<br>1 digit<br>1 special character and should be minimum 8 character
+          long.</small>
+      </div>
+    </div>
+    <br>
+    <div>
+      <button [disabled]="loginForm.form.invalid" class="btn btn-success" type="submit"
+        (click)="OnSubmit()">Login</button>
+<br><br>
+        <button type="submit" class="btn btn-info"><small [routerLink]="['/addUser']">New User ? Register
+          here</small></button>
+    </div>
+
+  </form>
+</div>

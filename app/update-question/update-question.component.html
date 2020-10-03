@@ -1,0 +1,174 @@
+<app-navbar-home></app-navbar-home>
+<div>
+  <form (ngSubmit)="onSubmit()">
+    <table align="center">
+      <tr>
+        <th>
+          <h2>Question</h2>
+        </th>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <td> <input type="text" value="Question ID" readonly></td>
+          <td> <input type="number" readonly class="form-control" id="questionId" required
+              [(ngModel)]="question.questionId" name="questionId">
+          </td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="form-group">
+          <td><input type="text" value="Question Title" readonly></td>
+          <td> <input type="text" required #title="ngModel" placeholder="Enter the test title" class="form-control"
+              id="testtitle" [(ngModel)]="question.questionTitle" name="questionTitle"
+              [class.is-invalid]="title.invalid && title.touched">
+            <div *ngIf="title.errors && (title.invalid||title.touched)" [class.d-none]="title.valid || title.untouched">
+              <small class="text-danger" *ngIf="title.errors.required">Test title is required</small>
+
+            </div>
+          </td>
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <td><input type="text" value="Question Answer" readonly></td>
+          <td><input type="number" #questionans="ngModel" pattern="[0-9]*" placeholder="questionans"
+              class="form-control" id="questionans" required [(ngModel)]="question.questionAnswer" name="questionans"
+              [class.is-invalid]="questionans.invalid && questionans.touched">
+            <div *ngIf="questionans.errors && (questionans.invalid||questionans.touched)"
+              [class.d-none]="questionans.valid || questionans.untouched">
+              <small class="text-danger" *ngIf="questionans.errors.required">Question answer id is required</small>
+              <small class="text-danger" *ngIf="questionans.errors.pattern">Question answer cannot be negative
+              </small>
+            </div>
+
+          </td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="form-group">
+          <td> <input type="text" value="Question Marks" readonly></td>
+          <td> <input type="number" pattern="[1-9]*" placeholder="Enter the question marks" class="form-control"
+              id="testTotalMarks" required [(ngModel)]="question.questionMarks" name="testTotalMarks" #marks="ngModel"
+              [class.is-invalid]="marks.invalid && marks.touched">
+            <div *ngIf="marks.errors && (marks.invalid||marks.touched)" [class.d-none]="marks.valid || marks.untouched">
+              <small class="text-danger" *ngIf="marks.errors.required">Question marks is required</small>
+              <small class="text-danger" *ngIf="marks.errors.pattern">Question marks cannot be negative or zero</small>
+            </div>
+          </td>
+        </div>
+      </tr>
+
+
+      <tr>
+        <th>
+          <h2>Answers</h2>
+        </th>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <!-- <td><input type="text" value="AnswerId" readonly></td>
+          <td><input type="text" value="Answer Value" readonly></td>
+          <br>
+          <td><input type="number" #questionans1="ngModel" pattern="[0-9]*" class="form-control" id="answerId1"
+              placeholder="AnswerId 1" required [(ngModel)]="answer1.id" name="answer1.id"
+              [class.is-invalid]="questionans.invalid && questionans.touched">
+            <div *ngIf="questionans1.errors && (questionans1.invalid||questionans1.touched)"
+              [class.d-none]="questionans1.valid || questionans1.untouched">
+              <small class="text-danger" *ngIf="questionans1.errors.required">Question answer id is required</small>
+              <small class="text-danger" *ngIf="questionans1.errors.pattern">Question answer cannot be negative
+              </small>
+            </div>
+          </td> -->
+          <td><input type="text" #ansvalue1="ngModel" class="form-control" id="answerValue1" required
+              [(ngModel)]="answer1.value" name="answer1.value"
+              [class.is-invalid]="ansvalue1.invalid && ansvalue1.touched">
+            <div *ngIf="ansvalue1.errors && (ansvalue1.invalid||ansvalue1.touched)"
+              [class.d-none]="ansvalue1.valid || ansvalue1.untouched">
+              <small class="text-danger" *ngIf="ansvalue1.errors.required">Answer value is required</small>
+
+            </div>
+          </td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="form-group">
+
+          <!-- <td><input type="number" #questionans2="ngModel" pattern="[0-9]*" class="form-control" id="answerId2"
+              placeholder="AnswerId 2" required [(ngModel)]="answer2.id" name="answer2.id"
+              [class.is-invalid]="questionans2.invalid && questionans2.touched">
+            <div *ngIf="questionans2.errors && (questionans2.invalid||questionans2.touched)"
+              [class.d-none]="questionans2.valid || questionans2.untouched">
+              <small class="text-danger" *ngIf="questionans2.errors.required">Question answer id is required</small>
+              <small class="text-danger" *ngIf="questionans2.errors.pattern">Question answer cannot be negative
+              </small>
+            </div>
+          </td> -->
+          <td> <input type="text" #ansvalue2="ngModel" class="form-control" id="answerValue2" required
+              [(ngModel)]="answer2.value" name="answer2.value"
+              [class.is-invalid]="ansvalue2.invalid && ansvalue2.touched">
+            <div *ngIf="ansvalue2.errors && (ansvalue2.invalid||ansvalue2.touched)"
+              [class.d-none]="ansvalue2.valid || ansvalue2.untouched">
+              <small class="text-danger" *ngIf="ansvalue2.errors.required">Answer value is required</small>
+
+            </div>
+          </td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="form-group">
+
+          <!-- <td><input type="number" #questionans3="ngModel" pattern="[0-9]*" class="form-control" id="answerId3"
+              placeholder="AnswerId 3" required [(ngModel)]="answer3.id" name="answer3.id"
+              [class.is-invalid]="questionans3.invalid && questionans3.touched">
+            <div *ngIf="questionans3.errors && (questionans3.invalid||questionans3.touched)"
+              [class.d-none]="questionans3.valid || questionans3.untouched">
+              <small class="text-danger" *ngIf="questionans3.errors.required">Question answer id is required</small>
+              <small class="text-danger" *ngIf="questionans3.errors.pattern">Question answer cannot be negative
+              </small>
+            </div>
+          </td> -->
+          <td> <input type="text" #ansvalue3="ngModel" class="form-control" id="answerValue3" required
+              [(ngModel)]="answer3.value" name="answer3.value"
+              [class.is-invalid]="ansvalue3.invalid && ansvalue3.touched">
+            <div *ngIf="ansvalue3.errors && (ansvalue3.invalid||ansvalue3.touched)"
+              [class.d-none]="ansvalue3.valid || ansvalue3.untouched">
+              <small class="text-danger" *ngIf="ansvalue3.errors.required">Answer value is required</small>
+
+            </div>
+          </td>
+        </div>
+      </tr>
+
+      <tr>
+        <div class="form-group">
+<!-- 
+          <td><input type="number" #questionans4="ngModel" pattern="[0-9]*" class="form-control" id="answerId4"
+              placeholder="AnswerId 4" required [(ngModel)]="answer4.id" name="answer4.id"
+              [class.is-invalid]="questionans4.invalid && questionans4.touched">
+            <div *ngIf="questionans4.errors && (questionans4.invalid||questionans4.touched)"
+              [class.d-none]="questionans4.valid || questionans4.untouched">
+              <small class="text-danger" *ngIf="questionans4.errors.required">Question answer id is required</small>
+              <small class="text-danger" *ngIf="questionans4.errors.pattern">Question answer cannot be negative
+              </small>
+            </div>
+          </td> -->
+          <td> <input type="text" #ansvalue4="ngModel" class="form-control" id="answerValue4" required
+              [(ngModel)]="answer4.value" name="answer4.value"
+              [class.is-invalid]="ansvalue4.invalid && ansvalue4.touched">
+            <div *ngIf="ansvalue4.errors && (ansvalue4.invalid||ansvalue4.touched)"
+              [class.d-none]="ansvalue4.valid || ansvalue4.untouched">
+              <small class="text-danger" *ngIf="ansvalue4.errors.required">Answer value is required</small>
+
+            </div>
+          </td>
+        </div>
+      </tr>
+
+      <button type="submit" class="btn btn-success">Submit</button>
+    </table>
+  </form>
+</div>
